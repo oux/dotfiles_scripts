@@ -1,6 +1,8 @@
 shopt -s autocd
 # for avoid stop signal on terminal + permit forward-search
 stty -ixon
+#export TERM=xterm-256color
+#export TERM=screen-256color
 
 #export jAVA_HOME=/opt/jdk1.6.0_32
 export CLASSPATH=.
