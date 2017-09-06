@@ -2,7 +2,7 @@
 # alias vi=nvim
 alias vi=/usr/bin/vim
 alias b="echo -e '\a'"
-alias z="ssh lab2"
+alias z="[ \"$TMUX\" ] && tmux rename-window lab2; ssh lab2 && [ \"$TMUX\" ] && tmux rename-window bash"
 alias c="cd $(< ~/.cwd)"
 # alias c="chromium-browser --proxy-pac-url=http://wpad.intel.com/wpad.dat"
 alias hl="grep -A9999"

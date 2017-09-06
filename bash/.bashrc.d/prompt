@@ -17,7 +17,7 @@ esac
 
 mkdir -p $HOME/.cwd
 WIN_ID=$(xdpyinfo  2> /dev/null|awk '/focus/{sub(",","",$3);print $3}')
-[ "$WIN_ID" ] && PROMPT_COMMAND="pwd > $HOME/.cwd/$WIN_ID" || echo "No window id detected, no PROMPT_COMMAND setup"
+[ "$WIN_ID" ] && PROMPT_COMMAND="pwd > $HOME/.cwd/$WIN_ID"
 
 
 TITLE_DISPLAY='\[\e]2;\w\a\]'
