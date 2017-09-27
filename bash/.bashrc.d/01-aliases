@@ -2,6 +2,7 @@
 # alias vi=nvim
 alias vi=/usr/bin/vim
 alias b="echo -e '\a'"
+alias l="ls -lah"
 alias z="[ \"$TMUX\" ] && tmux rename-window lab2; ssh lab2 && [ \"$TMUX\" ] && tmux rename-window bash"
 alias colors="msgcat --color=test"
 alias c="cd $(< ~/.cwd)"
