@@ -235,8 +235,9 @@ for_window [window_role="buddy_list"] floating enable
 for_window [class="Octave" title="Figure.*"] floating enable
 assign [class="Pidgin"] 1
 # for_window [window_role="buddy_list"] focus; resize shrink width 50 ppt
-for_window [class="Chromium-browser"] border none
-for_window [class="Firefox"] border none
-for_window [class="Navigator"] border none
+for_window [class="URxvt"] border 1pixel
+for_window [class="Chromium-browser"] border 1pixel
+for_window [class="Firefox"] border 1pixel
+for_window [class="Navigator"] border 1pixel
 # force_display_urgency_hint 500 ms
 
