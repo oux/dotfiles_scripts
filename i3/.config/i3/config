@@ -172,16 +172,16 @@ bindsym $mod+Shift+S mode "resize"
 
 # Not yet on my i3 version:
 # show_marks yes
-bindsym $mod+m exec i3-msg mark tmp
-bindsym Mod1+Tab exec ~/bin/i3_toggle_containers.py tmp
-bindsym $mod+t exec ~/bin/i3_toggle_containers.py todo
+bindsym $mod+m exec i3-msg mark mark
+bindsym Mod1+Tab exec ~/bin/i3_focus_mark.sh -t mark
+bindsym $mod+t exec ~/bin/i3_focus_mark.sh todo
 
 bindsym $mod+shift+KP_1 exec i3-msg mark 1
-bindsym $mod+KP_1 exec ~/bin/i3_toggle_containers.py 1
+bindsym $mod+KP_1 exec ~/bin/i3_focus_mark.sh 1
 bindsym $mod+shift+KP_2 exec i3-msg mark 2
-bindsym $mod+KP_2 exec ~/bin/i3_toggle_containers.py 2
+bindsym $mod+KP_2 exec ~/bin/i3_focus_mark.sh 2
 bindsym $mod+shift+KP_3 exec i3-msg mark 3
-bindsym $mod+KP_3 exec ~/bin/i3_toggle_containers.py 3
+bindsym $mod+KP_3 exec ~/bin/i3_focus_mark.sh 3
 
 bindsym $mod+Shift+w exec ~/bin/i3_toggle_workspace.py 2
 
