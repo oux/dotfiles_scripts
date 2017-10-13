@@ -1,0 +1,10 @@
+function todo() {
+if pgrep -f "vim $HOME/WW/ww.otl"
+then
+    ~/bin/i3_focus_mark.sh todo
+else
+    i3-msg mark todo && vi ~/WW/ww.otl && i3-msg unmark todo
+fi
+}
+
+# vi:ft=sh
