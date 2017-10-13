@@ -16,13 +16,12 @@ alias t="tmux a"
 alias reboot="sudo reboot"
 alias o="octave --silent"
 
-function todo() {
-if pgrep -f "vi /home/seb/WW/ww.votl"
-then
-    ~/bin/i3_toggle_containers.py todo
-else
-    i3-msg mark todo && vi ~/WW/ww.votl && i3-msg unmark todo
-fi
+function up() {
+    current_root=$(git rev-parse --show-cdup)
+    [ "$current_root" ] && cd $current_root && return
+    current_sp=$(git rev-parse --show-superproject-working-tree)
+    [ "$current_sp" ] && cd $current_sp && return
+    true
 }
 
 function mkcd() {
