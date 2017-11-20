@@ -1,0 +1,5 @@
+alias k='kubectl --namespace=devsandbox'
+alias neosh='k exec -it neo4j-0 bash'
+
+
+# vi:ft=bash
