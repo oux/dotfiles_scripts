@@ -186,6 +186,7 @@ bindsym $mod+KP_3 exec ~/bin/i3_focus_mark.sh 3
 bindsym $mod+Shift+w exec ~/bin/i3_toggle_workspace.py 2
 
 # Multi-screen
+bindsym $mod+shift+x move workspace to output right; focus output right
 bindsym $mod+x move workspace to output right
 bindsym $mod+w focus output right
 bindsym $mod+o exec ~/bin/toggle_screen.sh
