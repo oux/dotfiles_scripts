@@ -15,6 +15,7 @@ alias serial_comm="minicom --device /dev/ttyUSB0"
 alias t="tmux a"
 alias reboot="sudo reboot"
 alias o="octave --silent"
+alias glab="python3 -i ~/workspace/scripts/bin/glabo"
 
 function up() {
     current_root=$(git rev-parse --show-cdup)
