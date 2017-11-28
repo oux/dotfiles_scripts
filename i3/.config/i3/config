@@ -225,6 +225,7 @@ bindsym $mod+Shift+p move container left
 bindsym $mod+Shift+n move container right
 #bindsym $mod+Shift+w exec "virtualbox --startvm win8 &> /tmp/virtualbox.log"
 bindsym $mod+u exec "xrdb -load .Xresources && urxvt"
+bindsym $mod+c exec "xsel |xsel -ib"
 workspace_auto_back_and_forth yes
 
 force_focus_wrapping yes
