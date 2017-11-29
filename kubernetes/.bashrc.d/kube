@@ -1,5 +1,6 @@
 alias k='kubectl --namespace=devsandbox'
 alias neosh='k exec -it neo4j-0 bash'
+alias celery="k exec -it \$(k get pods  |awk '/gitlab-celery.*Running/{print \$1; exit}') bash"
 
 
 # vi:ft=bash

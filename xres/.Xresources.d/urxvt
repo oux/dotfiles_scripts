@@ -3,7 +3,7 @@ URxvt*matcher.button:  2
 ! URxvt.lineSpace:             -1
 !URxvt*perl-lib:                       .config-xmonad/urxvt/perl
 !URxvt*perl-ext-common:                clipboard,confirm-paste,font,searchable-scrollback,selection-popup,keyboard-select,autocomplete-ALL-the-things
-URxvt.perl-ext: default,matcher,clipboard
+URxvt.perl-ext: default,matcher,selection-autotransform
 !URxvt.perl-ext: default,matcher
 !URxvt.keysym.M-u: perl:url-select:select_next
 
@@ -63,8 +63,9 @@ URxvt.keysym.C-KP_Add: command:\033]710;xft:Menlo:pixelsize=15\007
 !URxvt.font: xft:monaco:size=10
 
 URxvt.urgentOnBell:         True
-URxvt.cutchars: "\ ` \"'-&()*,;<=>?@[]^{|}/.\:"$│
-!URxvt*inheritPixmap:        True
+URxvt.cutchars:             "\ ` \"'-&()*,;<=>?@[]^{|}/.\:$│"
+URxvt.selection-autotransform.0: s/\\x{E2}\\x{94}\\x{82}/ttt/g
+!URxvt*inheritPixmap:       True
 URxvt*jumpScroll:           False
 URxvt*visualBell:           False
 URxvt*scrollBar:            False

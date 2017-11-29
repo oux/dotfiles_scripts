@@ -13,4 +13,5 @@ compton --vsync drm -b
 
 #blueproximity &
 rofi -modi "window,run,win:i3_switch_containers.py,cwd:urxvt_select_cwd.sh" -key-window mod4+Tab -key-win Shift+mod4+Tab -key-run mod4+d -key-cwd Shift+mod4+Return -quiet &
+parcellite -d
 exec i3
