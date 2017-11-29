@@ -127,6 +127,9 @@ bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+E exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# Take care synergy vs i3 order
+# bindsym Control+Mod1+o exec ~/bin/lock.sh
+bindsym F11 exec ~/bin/lock.sh
 bindsym $mod+l exec ~/bin/lock.sh
 #bindsym $mod+F12 exec i3lock -c 653356
 
