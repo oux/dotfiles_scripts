@@ -1,6 +1,10 @@
+source <(kubectl completion bash)
+
+alias kubectl='kubectl --namespace=devsandbox'
 alias k='kubectl --namespace=devsandbox'
-alias neosh='k exec -it neo4j-0 bash'
-alias celery="k exec -it \$(k get pods  |awk '/gitlab-celery.*Running/{print \$1; exit}') bash"
+alias kneo='k exec -it neo4j-0 bash'
+alias kcly="k exec -it \$(k get pods  |awk '/gitlab-celery.*Running/{print \$1; exit}') bash"
+alias kjup="k exec -it \$(k get pods  |awk '/gl-cly-jup.*Running/{print \$1; exit}') bash"
 
 
 # vi:ft=bash
