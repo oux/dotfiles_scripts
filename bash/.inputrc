@@ -12,3 +12,5 @@
 "\e[H": beginning-of-line
 "\e[F": end-of-line
 
+"\C-x\C-s": '\C-asudo \C-e'
+"\C-x\C-r": re-read-init-file
