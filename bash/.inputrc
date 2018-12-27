@@ -13,4 +13,9 @@
 "\e[F": end-of-line
 
 "\C-x\C-s": '\C-asudo \C-e'
+# "\C-x\C-q": "\C-@\C-asudo \C-x\C-x"
 "\C-x\C-r": re-read-init-file
+# Space: magic-space
+# TAB: menu-complete
+# "S-TAB": menu-complete-backward
+"": unix-word-rubout
