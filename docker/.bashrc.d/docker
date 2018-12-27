@@ -1,0 +1,7 @@
+function dexe() {
+    docker exec -it $1 bash
+}
+
+alias dockerclean='docker rmi $(docker images -q -f dangling=true)'
+
+# vi:ft=bash
