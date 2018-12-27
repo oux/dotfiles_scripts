@@ -128,10 +128,11 @@ bindsym $mod+Shift+R restart
 bindsym $mod+Shift+E exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Take care synergy vs i3 order
-# bindsym Control+Mod1+o exec ~/bin/lock.sh
-bindsym F11 exec ~/bin/lock.sh
-bindsym $mod+l exec ~/bin/lock.sh
-#bindsym $mod+F12 exec i3lock -c 653356
+# bindsym $mod+l exec "i3-msg exec xdotool key F12 && ~/bin/lock.sh"
+# bindsym --release $mod+l "exec xdotool sleep 0.5 key F12 && ~/bin/lock.sh"
+# send F12 catched by synergy to lock windows workstation and then lock the linux
+bindsym --release $mod+l "exec xdotool key --clearmodifiers F12 && ~/bin/lock.sh"
+bindcode --release 148 "exec xdotool key --clearmodifiers F12 && ~/bin/lock.sh"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -193,7 +194,7 @@ bindsym $mod+shift+x move workspace to output right; focus output right
 bindsym $mod+x move workspace to output right
 bindsym $mod+w focus output right
 bindsym $mod+o exec ~/bin/toggle_screen.sh
-
+bindsym --release Print  exec cd ~/screenshots && scrot --select
 # exec xrandr --output DP1 --pos -1200x-620 --auto --left-of VGA1 --rotate left
 #exec_always ~/.local/lib/python2.7/site-packages/powerline/bindings/bar/powerline-bar.py --i3 | ~/workspace/misc/lemonbar/lemonbar -B
 
@@ -219,9 +220,10 @@ workspace_layout tabbed
 workspace 1 output DP1
 workspace 2 output VGA1
 
-exec synergys
+# exec synergys
 # exec sudo ionice -c 1 -n 1 -p $(pidof synergys)
 exec always xsetroot -solid '#'653356
+exec_always rofi -modi "window,run,win:i3_switch_containers.py,cwd:urxvt_select_cwd.sh" -key-window mod4+Tab -key-win Shift+mod4+Tab -key-run mod4+d -key-cwd Shift+mod4+Return -quiet
 
 # exec_always xrdb -load ~/.Xresources
 bindsym $mod+Shift+p move container left
@@ -238,6 +240,7 @@ bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: '
 # TODO pidgin configuration resize
 for_window [window_role="buddy_list"] floating enable
 for_window [class="Octave" title="Figure.*"] floating enable
+for_window [title="Event Tester"] floating enable
 assign [class="Pidgin"] 1
 # for_window [window_role="buddy_list"] focus; resize shrink width 50 ppt
 for_window [class="URxvt"] border 1pixel
