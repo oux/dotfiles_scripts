@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 CP_NAME=$1
 
@@ -10,5 +10,5 @@ case $BLOCK_BUTTON in
         echo -n "$CLIP" |strings | xsel -ib
         ;;
 esac
-CLIP=$(xsel $CP_NAME |strings | cut -c -15)
+CLIP=$(xsel $CP_NAME |strings | sed "s/[\"']//g;q")
 echo "${CLIP::20}"
