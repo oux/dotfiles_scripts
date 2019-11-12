@@ -127,14 +127,8 @@ bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+E exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Take care synergy vs i3 order
-# bindsym $mod+l exec "i3-msg exec xdotool key F12 && ~/bin/lock.sh"
-# bindsym --release $mod+l "exec xdotool sleep 0.5 key F12 && ~/bin/lock.sh"
-# send F12 catched by synergy to lock windows workstation and then lock the linux
-bindsym --release $mod+l "exec xdotool key --clearmodifiers F12 && xautolock -locknow"
-bindsym --release 148 "exec xdotool key --clearmodifiers F12 && xautolock -locknow"
-# bindsym --release $mod+l "exec xdotool key --clearmodifiers F12 && ~/bin/lock.sh"
-# bindcode --release 148 "exec xdotool key --clearmodifiers F12 && ~/bin/lock.sh"
+bindsym --release $mod+l exec xautolock -locknow
+bindsym --release 148 exec xautolock -locknow
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -214,6 +208,7 @@ bar {
     #status_command ~/.local/lib/python2.7/site-packages/powerline/bindings/bar/powerline-bar.py --i3
     status_command i3blocks
     # status_command i3status | ~/.i3/i3status.py w t 2>> /tmp/i3status.log
+    tray_output DP1
 }
 
 default_orientation vertical
@@ -226,7 +221,8 @@ workspace 2 output VGA1
 # exec sudo ionice -c 1 -n 1 -p $(pidof synergys)
 exec_always --no-startup-id xsetroot -solid "#123"
 exec rofi -modi "window,run,win:i3_switch_containers.py,cwd:urxvt_select_cwd.sh" -key-window mod4+Tab -key-win Shift+mod4+Tab -key-run mod4+d -key-cwd Shift+mod4+Return -quiet
-exec_always xautolock -time 1  -locker ~/bin/xtrlock.sh  -nowlocker ~/bin/i3lock.sh -bell 50 -notify 50 -corners ++++
+exec_always xautolock -time 1 -locker ~/bin/xtrlock.sh -nowlocker ~/bin/i3lock.sh -corners ++++
+exec parcellite
 
 # exec_always xrdb -load ~/.Xresources
 bindsym $mod+Shift+p move container left
