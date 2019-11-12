@@ -1,4 +1,4 @@
-URxvt*urlLauncher: x-www-browser
+URxvt*urlLauncher: sensible-browser
 URxvt*matcher.button:  2
 ! URxvt.lineSpace:             -1
 !URxvt*perl-lib:                       .config-xmonad/urxvt/perl
@@ -17,7 +17,7 @@ URxvt.keysym.M-q: perl:matcher:last
 
 URxvt.matcher.rend.0: Uline fg6
 
-URxvt.matcher.pattern.1: ((TA|SWL|ICORE)-\\d+)
+URxvt.matcher.pattern.1: ((TA|SWL|ICORE|NESTOR)-\\d+)
 URxvt.matcher.launcher.1: sensible-browser https:\/\/jira.dt.renault.com\/browse\/$1
 URxvt.matcher.rend.1: Uline fg5
 
@@ -26,9 +26,9 @@ URxvt.matcher.launcher.2: /home/renault/bin/get_gl_url.sh $1
 ! https:\/\/opticm6.rds.intel.com/r/#/q/commit:$1,n,z
 ! URxvt.matcher.rend.2: Uline fg1
 
-URxvt.matcher.pattern.3: \\bmerge[-_]?requests?[/:\\s](\\d+)
-URxvt.matcher.launcher.3: sensible-browser http:\/\/gitlab.tls.renault.fr\/nestor\/gitlab-celery\/merge_requests\/$1
-URxvt.matcher.rend.3: Uline fg6
+!URxvt.matcher.pattern.3: \\bmerge[-_]?requests?[/:\\s](\\d+)
+!URxvt.matcher.launcher.3: sensible-browser http:\/\/gitlab.tls.renault.fr\/nestor\/gitlab-celery\/merge_requests\/$1
+!URxvt.matcher.rend.3: Uline fg6
 
 
 !URxvt*font: xft:Menlo:pixelsize=10
