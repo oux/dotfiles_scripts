@@ -6,11 +6,18 @@
 	name = Sebastien MICHEL
 	email = sebastien.t.michel@renault.com
 [alias]
+    b = branch --sort=-committerdate
+    # last branches
+    lb = branch --sort=-committerdate -a --contains HEAD~10
+    t = tag --sort=-committerdate
+    # last tags
+    lt = tag --sort=-committerdate --contains HEAD~10
+    ba = branch --sort=-committerdate -a
     lg = log --decorate --graph --stat
     l = log --decorate --graph --stat --oneline
     up = rev-parse --show-toplevel
     ca = commit --amend --no-edit
-    fixup = "!GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash"
+    fixup = "!GIT_SEQUENCE_EDITOR=true GIT_REFLOG_ACTION='rebase fixup' git rebase -i --autosquash"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -27,8 +34,8 @@
 
 [remote "origin"]
     # gitlab magic branches
-    fetch = +refs/merge-requests/*:refs/remotes/origin/merge-requests/*
-    fetch = +refs/environments/*:refs/remotes/origin/environments/*
+    # fetch = +refs/merge-requests/*:refs/remotes/origin/merge-requests/*
+    # fetch = +refs/environments/*:refs/remotes/origin/environments/*
 
 [credential]
     helper = password-store
