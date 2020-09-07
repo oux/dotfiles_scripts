@@ -1,3 +1,4 @@
+alias nstr=~/workspace/nstr/target/debug/nstr
 alias gather_smaps="~/workspace/teamforge/utilities-scripts/ram/smaps-map/do_gather.sh"
 alias gather_dalvik_segments="~/workspace/teamforge/utilities-scripts/ram/dalvik-segments-map/do_gather.sh"
 alias gather_mem_profiling="~/workspace/teamforge/utilities-scripts/ram/mem_profiling/scripts/do_gather.sh"
