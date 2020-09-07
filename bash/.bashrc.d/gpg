@@ -1,0 +1,3 @@
+# permits to use tty to ask password on git command using git credential helper
+# based on gpg like password-store
+export GPG_TTY=$(tty)
