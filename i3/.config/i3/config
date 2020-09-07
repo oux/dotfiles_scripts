@@ -221,7 +221,7 @@ workspace 2 output VGA1
 # exec sudo ionice -c 1 -n 1 -p $(pidof synergys)
 exec_always --no-startup-id xsetroot -solid "#123"
 exec rofi -modi "window,run,win:i3_switch_containers.py,cwd:urxvt_select_cwd.sh" -key-window mod4+Tab -key-win Shift+mod4+Tab -key-run mod4+d -key-cwd Shift+mod4+Return -quiet
-exec_always xautolock -time 1 -locker ~/bin/xtrlock.sh -nowlocker ~/bin/i3lock.sh -corners ++++
+exec_always xautolock -time 3 -locker ~/bin/xtrlock.sh -nowlocker ~/bin/i3lock.sh -corners ++++
 exec parcellite
 
 # exec_always xrdb -load ~/.Xresources
