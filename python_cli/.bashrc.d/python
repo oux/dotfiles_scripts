@@ -3,4 +3,6 @@ export PATH="/home/renault/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+
+alias pytags="find -name '*.py' \! -path "*.eggs*" \! -path '*tmp*' | ctags -L -"
 # vim:ft=sh
