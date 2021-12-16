@@ -24,7 +24,7 @@
 #
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
-command=/usr/local/libexec/i3blocks/$BLOCK_NAME
+command=/usr/share/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
@@ -56,39 +56,39 @@ markup=none
 #command=/home/renault/bin/xsel.sh -b
 #interval=3
 
-[issues]
-label=Δ
-markup=pango
-command=/home/renault/bin/glsession.py issues
-interval=600
-
-[mrs]
-label=↶
-markup=pango
-command=/home/renault/bin/glsession.py mrs
-interval=600
-
-[todo]
-label=☑
-markup=pango
-command=/home/renault/bin/glsession.py todo
-interval=600
-
-[nestor]
-label=Ⓝ
-label=⚘
-# label=৺
-markup=pango
-command=/home/renault/bin/glsession.py nestor
-interval=600
-
-[nuc]
-label=Ⓝ
-label=⚘
-# label=৺
-markup=pango
-command=/home/renault/bin/toggle_nuc.sh
-interval=600
+#[issues]
+#label=Δ
+#markup=pango
+#command=/home/renault/bin/glsession.py issues
+#interval=600
+#
+#[mrs]
+#label=↶
+#markup=pango
+#command=/home/renault/bin/glsession.py mrs
+#interval=600
+#
+#[todo]
+#label=☑
+#markup=pango
+#command=/home/renault/bin/glsession.py todo
+#interval=600
+#
+#[nestor]
+#label=Ⓝ
+#label=⚘
+## label=৺
+#markup=pango
+#command=/home/renault/bin/glsession.py nestor
+#interval=600
+#
+#[nuc]
+#label=Ⓝ
+#label=⚘
+## label=৺
+#markup=pango
+#command=/home/renault/bin/toggle_nuc.sh
+#interval=600
 
 # Memory usage
 #
@@ -151,3 +151,13 @@ interval=10
 [time]
 command=date +'%Y-%m-%d %H:%M (WW %V)'
 interval=60
+
+[keyindicator]
+instance=CAPS
+interval=once
+signal=11
+
+[keyindicator]
+instance=NUM
+interval=once
+signal=11

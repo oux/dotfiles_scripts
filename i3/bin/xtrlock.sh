@@ -1,4 +1,4 @@
-env > /tmp/xtrlock.log
+# env > /tmp/xtrlock.log
 xset dpms force off &>> /tmp/xtrlock.log
 sleep 5
 if xset q |grep -q "Monitor is Off"
