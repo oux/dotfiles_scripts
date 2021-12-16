@@ -1,8 +1,15 @@
 export PYTHONSTARTUP=~/.pythonrc
-export PATH="/home/renault/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 
-alias pytags="find -name '*.py' \! -path "*.eggs*" \! -path '*tmp*' | ctags -L -"
+alias pyfiles="find -name '*.py' \! -path "*.eggs*" \! -path '*tmp*' > python.files"
+alias pytags="ctags -L python.files"
+alias pycs="cscope -i python.files -b"
+alias cdvenv='cd $(pipenv --venv)'
+alias multienv="poetry config  --local virtualenvs.in-project false"
 # vim:ft=sh

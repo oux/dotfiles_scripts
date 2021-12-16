@@ -1,11 +1,18 @@
 import atexit
+import code
 import os
-import sys
 import readline
 import rlcompleter
+import sys
 from pprint import pprint
+# To create interactive
+# pyrc='/home/renault/.pythonrc'; im = locals(); f = open(pyrc); exec(compile(f.read(), pyrc, 'exec'), im)
 
 python_history = os.path.join(os.environ['HOME'], '.python_history')
+vars = globals()
+vars.update(locals())
+
+readline.set_completer(rlcompleter.Completer(vars).complete)
 readline.parse_and_bind("tab: complete")
 readline.set_history_length(5000)
 try:
@@ -13,3 +20,6 @@ try:
     atexit.register(readline.write_history_file, python_history)
 except IOError:
     pass
+if __name__ != "__main__":
+    # code.interact(local=im)
+    code.InteractiveConsole(vars).interact()
