@@ -3,7 +3,12 @@
 
 xdotool key --clearmodifiers F12
 xset dpms force off
+date >> /tmp/toto
+echo LOCK >> /tmp/toto
 i3lock -c 653356
+date >> /tmp/toto
+echo UNLOCK >> /tmp/toto
+xrandr >> /tmp/toto
 
 #CMD="i3lock -nc 653356"
 #LOG=/tmp/totolock

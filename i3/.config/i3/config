@@ -190,6 +190,7 @@ bindsym $mod+shift+x move workspace to output right; focus output right
 bindsym $mod+x move workspace to output right
 bindsym $mod+w focus output right
 bindsym $mod+o exec ~/bin/toggle_screen.sh
+bindsym $mod+shift+o exec ~/bin/reset_screen.sh
 bindsym --release Print  exec cd ~/screenshots && scrot --select
 # exec xrandr --output DP1 --pos -1200x-620 --auto --left-of VGA1 --rotate left
 #exec_always ~/.local/lib/python2.7/site-packages/powerline/bindings/bar/powerline-bar.py --i3 | ~/workspace/misc/lemonbar/lemonbar -B
@@ -210,17 +211,20 @@ bar {
     # status_command i3status | ~/.i3/i3status.py w t 2>> /tmp/i3status.log
     tray_output DP1
 }
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Caps_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 default_orientation vertical
 workspace_layout tabbed
 
-workspace 1 output DP1
-workspace 2 output VGA1
+workspace 1 output DP-1
+workspace 2 output VGA-1
 
 # exec synergys
 # exec sudo ionice -c 1 -n 1 -p $(pidof synergys)
 exec_always --no-startup-id xsetroot -solid "#123"
-exec rofi -modi "window,run,win:i3_switch_containers.py,cwd:urxvt_select_cwd.sh" -key-window mod4+Tab -key-win Shift+mod4+Tab -key-run mod4+d -key-cwd Shift+mod4+Return -quiet
+bindsym $mod+d exec rofi -show run
+# exec rofi -modi "window,run,win:i3_switch_containers.py,cwd:urxvt_select_cwd.sh" -key-window mod4+Tab -key-win Shift+mod4+Tab -key-run mod4+d -key-cwd Shift+mod4+Return -quiet
 exec_always xautolock -time 3 -locker ~/bin/xtrlock.sh -nowlocker ~/bin/i3lock.sh -corners ++++
 exec parcellite
 
