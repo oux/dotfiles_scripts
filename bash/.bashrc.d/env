@@ -15,4 +15,5 @@ export GIT_PAGER=less
 alias less=$PAGER
 alias zless=$PAGER
 
+export LS_COLORS=${LS_COLORS/di=01;34/di=01;36}
 # vim:ft=sh
