@@ -23,29 +23,37 @@ WIN_ID=$(xdpyinfo  2> /dev/null|awk '/focus/{sub(",","",$3);print $3}')
 TITLE_DISPLAY='\[\e]2;\w\a\]'
 ALARM='echo -ne "\a"'
 
-RETURN_CODE='$(
-  RES=$? && [ $RES -ne 0 ] && echo "\[\e[01;31m\]r=$RES\[\e[00m\]|"
+export SEP=$'\uE0B4'  # rond
+export SEP=$'\uE0B2'  # fleche inverse
+export SEP=$'\uE0B0'  # fleche
+export SEP=$'\uE0B6'  # rond inverse
+# export SEP=$'\uE0B1'  #if prompt with same readline background color
+
+FG1=13
+FG2=35
+FG2=10
+BG=236
+RETURN_CODE=$'\[\e[48;5;'$BG$'m\]$(
+  RES=$? && [ $RES -ne 0 ] && echo "\[\e[38;5;1m\]r=$RES\e[38;5;'$FG2$'m\]|"
 )'
 
-COMMON_PROMPT='$(
-        [  "$(jobs -l)" ] && echo "\[\e[01;33m\]j=\j\[\e[00m\]|"
-     )'$C1'\t|$(
-     [ "$ANDROID_SERIAL" ] &&
-         {
-             [ "$ANDROID_SERIAL_ALIAS" ] &&
-                 echo "\[\e[01;34m\]$ANDROID_SERIAL_ALIAS($ANDROID_SERIAL)\[\e[00m\]|" ||
-                 echo "\[\e[01;34m\]$ANDROID_SERIAL\[\e[00m\]|"
-         }
-     [ "$TARGET_PRODUCT" ] && echo "\[\e[01;33m\]$TARGET_PRODUCT\[\e[00m\]|"
-     )'$C2'\w\[\e[00m\]\$ '
-
+JOBS=$'\[\e[48;5;'$BG$'m\]$(
+        [  "$(jobs -l)" ] && echo "\[\e[38;5;11m\]j=\j\[\e[38;5;'$FG2$'m\]|"
+    )'
+COMMON_PROMPT=$'\[\e[38;5;'$FG2$'m\e[48;5;'$BG$'m\]''\t|'$'\[\e[38;5;'$FG1$'m\e[48;5;'$BG$'m\]\w'
+# 233 like on ~/.tmux.conf window-active-style bg=colour233
+INV_ENDING=$'\[\e[38;5;233m\e[48;5;'$BG$'m\]'$SEP$'\[\e[;m\]'
+NOR_ENDING=$'\[\e[38;5;'$BG$'m\e[48;5m\]'$SEP$'\[\e[;m\]'
+ENDING=$NOR_ENDING
+test $SEP == $'\uE0B2' && ENDING=$INV_ENDING
+test $SEP == $'\uE0B6' && ENDING=$INV_ENDING
 case "$TERM" in
     linux|xterm|screen)
-    PS1=$RETURN_CODE$COMMON_PROMPT
+    PS1=$RETURN_CODE$JOBS$COMMON_PROMPT$ENDING
     ;;
 *)
     # [ "$WIN_ID" ] && PROMPT_COMMAND=$ALARM"; $PROMPT_COMMAND"
-    PS1=$RETURN_CODE$TITLE_DISPLAY$COMMON_PROMPT
+    PS1=$RETURN_CODE$JOBS$TITLE_DISPLAY$COMMON_PROMPT$ENDING
 ;;
 esac
 
