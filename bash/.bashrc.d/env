@@ -4,6 +4,7 @@ stty -ixon
 #export TERM=xterm-256color
 export TERM=screen-256color
 
+export PATH=~/bin:$PATH
 #export jAVA_HOME=/opt/jdk1.6.0_32
 export CLASSPATH=.
 export ANT_HOME=/usr/share/ant
@@ -12,8 +13,18 @@ export EDITOR=vim
 
 export GIT_PAGER=less
 # export PAGER=~/bin/vimpager
-alias less=$PAGER
-alias zless=$PAGER
+# alias less=$PAGER
+# alias zless=$PAGER
 
 export LS_COLORS=${LS_COLORS/di=01;34/di=01;36}
+
+export LESS_TERMCAP_md=$'\e[01;36m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;44;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[01;35m'
+# export LESS=-R
+
+export RIPGREP_CONFIG_PATH=~/.config/ripgrep/ripgreprc
 # vim:ft=sh
