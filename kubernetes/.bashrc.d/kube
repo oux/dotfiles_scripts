@@ -1,3 +1,5 @@
+which kubectl &>/dev/null || return
+
 source <(kubectl completion bash)
 
 alias k='kubectl'
