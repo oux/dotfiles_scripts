@@ -1,0 +1,1 @@
+../dotfiles_pro/ascii/bin/gltags.sh
