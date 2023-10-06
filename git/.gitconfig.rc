@@ -14,7 +14,7 @@
     lt = tag --sort=-committerdate --contains HEAD~10
     ba = branch --sort=-committerdate -a
     lg = log --decorate --graph --stat
-    l = log --decorate --graph --stat --oneline
+    l = log --decorate --graph --oneline
     up = rev-parse --show-toplevel
     ca = commit --amend --no-edit
     fixup = "!GIT_SEQUENCE_EDITOR=true GIT_REFLOG_ACTION='rebase fixup' git rebase -i --autosquash"

@@ -1,11 +1,12 @@
 # With neovim ctrl+c on load of big files doesn't work
 # alias vi=nvim
-alias vi=/usr/bin/vim
+alias vi="/usr/bin/vim --display :0.0 --servername vim"
+alias v="/usr/bin/vim --display :0.0 --servername vim --remote"
 alias b="echo -e '\a'"
 alias l="ls -lah"
 alias z="[ \"$TMUX\" ] && tmux rename-window lab2; ssh lab2 && [ \"$TMUX\" ] && tmux rename-window bash"
 alias colors="msgcat --color=test"
-alias c="cd $(< ~/.cwd)"
+# alias c="cd $(< ~/.cwd)"
 # alias c="chromium-browser --proxy-pac-url=http://wpad.intel.com/wpad.dat"
 alias hl="grep -A9999"
 alias tf="cd ~/workspace/teamforge"
@@ -16,6 +17,7 @@ alias t="tmux a"
 alias reboot="sudo reboot"
 alias o="octave --silent"
 alias glab="python3 -i ~/workspace/scripts/bin/glabo"
+alias rg="rg -uu"
 
 function up() {
     current_root=$(git rev-parse --show-cdup)
@@ -63,15 +65,9 @@ done
 
 }
 
-function CD() {
+function CD() { pushd $(dirname $(readlink $(which $1))); }
 
-pushd $(dirname $(readlink $(which $1)))
-
-}
-
-function op {
-awk 'BEGIN{print '"$*"'}'
-}
+function op { awk 'BEGIN{print '"$*"'}'; }
 
 function rmm {
 rm "${@}"
