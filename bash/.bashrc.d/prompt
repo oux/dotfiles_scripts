@@ -1,18 +1,18 @@
 
-case $(hostname) in
-    tldlab021)
-        C1="\[\e[32;1m\]"
-        C2="\[\e[35;1m\]"
-        ;;
-    tldlab002)
-        C1="\[\e[33;1m\]"
-        C2="\[\e[34;1m\]"
-        ;;
-    tldairbus1)
-        C1="\[\e[31;1m\]"
-        C2="\[\e[36;1m\]"
-        ;;
-esac
+#case $(hostname) in
+#    tldlab021)
+#        C1="\[\e[32;1m\]"
+#        C2="\[\e[35;1m\]"
+#        ;;
+#    tldlab002)
+#        C1="\[\e[33;1m\]"
+#        C2="\[\e[34;1m\]"
+#        ;;
+#    tldairbus1)
+#        C1="\[\e[31;1m\]"
+#        C2="\[\e[36;1m\]"
+#        ;;
+#esac
 
 
 mkdir -p $HOME/.cwd
@@ -26,10 +26,10 @@ ALARM='echo -ne "\a"'
 export SEP=$'\uE0B4'  # rond
 export SEP=$'\uE0B2'  # fleche inverse
 export SEP=$'\uE0B0'  # fleche
-export SEP=$'\uE0B6'  # rond inverse
+# export SEP=$'\uE0B6'  # rond inverse ## To not work anymore with powerline patched font
 # export SEP=$'\uE0B1'  #if prompt with same readline background color
 
-FG1=13
+FG1=36
 FG2=35
 FG2=10
 BG=236
