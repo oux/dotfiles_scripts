@@ -1,7 +1,8 @@
 # With neovim ctrl+c on load of big files doesn't work
 # alias vi=nvim
-alias vi="/usr/bin/vim --display :0.0 --servername vim"
-alias v="/usr/bin/vim --display :0.0 --servername vim --remote"
+alias n="nvim"
+# alias vi="/usr/bin/vim --display :0.0 --servername vim"
+# alias v="/usr/bin/vim --display :0.0 --servername vim --remote"
 alias b="echo -e '\a'"
 alias l="ls -lah"
 alias z="[ \"$TMUX\" ] && tmux rename-window lab2; ssh lab2 && [ \"$TMUX\" ] && tmux rename-window bash"
@@ -18,6 +19,12 @@ alias reboot="sudo reboot"
 alias o="octave --silent"
 alias glab="python3 -i ~/workspace/scripts/bin/glabo"
 alias rg="rg -uu"
+alias gpg-restart="systemctl --user restart gpg-agent"
+
+function nw() {
+    namei $(which $1)
+}
+
 
 function up() {
     current_root=$(git rev-parse --show-cdup)

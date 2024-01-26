@@ -1,0 +1,27 @@
+Add following snipped of code on your ~/.bashrc
+
+ ---8<-----
+
+# export VERBOSE=1
+if [[ "$VERBOSE" ]]
+then
+    function in_progress() { echo -n "$shsep$(basename $1)"; export shsep="|"; }
+    function finish() { echo; }
+else
+    function in_progress() { T="$(basename $1)..."; echo -ne "\r$T"; printf "%$((COLUMNS-${#T}))s" ""; }
+    function finish() { echo -ne "\r"; }
+
+fi
+
+setterm --cursor off
+for f in ~/.bashrc.d/*
+do
+	fname=$(basename $f)
+	if [ ${fname#_} == ${fname} ]
+	then
+        in_progress $f
+		source $f
+	fi
+done
+finish
+setterm --cursor on

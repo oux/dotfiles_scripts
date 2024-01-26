@@ -23,5 +23,6 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[01;35m'
 # export LESS=-R
 
-export RIPGREP_CONFIG_PATH=~/.config/ripgrep/ripgreprc
+# export RIPGREP_CONFIG_PATH=~/.config/ripgrep/ripgreprc
+#
 # vim:ft=sh
