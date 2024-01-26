@@ -1,30 +1,38 @@
 #!/bin/bash
-ETAGS_PROG=etags
-CTAGS_PROG=Ctags
-TAGS_FILE=TAGS
-DIRS=${1:-.}
-ETAGS=true
-CTAGS=true
+DIRS="${@:-.}"
+
+function exec_exists() {
+    return $(which $1 &>/dev/null)
+}
 
 function etags_yml() {
-    $ETAGS_PROG $(find -name "*.yml" -o -name "*.yaml" -o -name "*.sh")
+    echo "building etags"
+    proc=$1
+    TAGS_FILE=TAGS
+    $proc $(find $DIRS -name "*.yml" -o -name "*.yaml" -o -name "*.sh")
     awk 'BEGIN{print ""}
     BEGINFILE{print FILENAME",0"}
     /^[^ ]*:/{link = $1;gsub(":$","",link);print $0""link""FNR}
-    ENDFILE{print ""}' $(find $DIRS -name "*.yml" ) >> $TAGS_FILE
+    ENDFILE{print ""}' $(find $DIRS -name "*.yml" -o -name "*.yaml" ) >> $TAGS_FILE
 }
 
 function ctags_yml() {
-    $CTAGS_PROG $(find -name "*.yml" -o -name "*.yaml" -o -name "*.sh")
+    echo "building ctags"
+    proc=$1
+    TAGS_FILE=tags
+    $proc --append=no $(find $DIRS -name "*.yml" -o -name "*.yaml" -o -name "*.sh")
     awk '/^[^ ]*:/{
         link = $1
         gsub(":$","",link)
-        print link"\t"FILENAME"\t/^"$0"$/;\"\ta"}' $(find $DIRS -name "*.yml" ) >> $TAGS_FILE
+        print link"\t"FILENAME"\t/^"$0"$/;\"\ta"}' $(find $DIRS -name "*.yml" -o -name "*.yaml" ) >> $TAGS_FILE
     mv $TAGS_FILE $TAGS_FILE.unsorted
     sort $TAGS_FILE.unsorted > $TAGS_FILE
 }
 
-$ETAGS_PROG --list-features |grep -q yaml && etags_yml || ETAGS=false
-$CTAGS_PROG --list-features |grep -q yaml && ctags_yml || CTAGS=false
-$ETAGS || $CTAGS && exit 0
-echo "Please install universal ctags with 'sudo apt install universal-ctags' to get yaml support"; exit 1;
+for proc in etags ctags
+do
+    [ $proc == "etags" ] && format=etags || format=ctags
+    exec_exists $proc && $proc --list-languages |grep -q Yaml && ${format}_yml $proc && exit 0
+done
+echo "Please install universal ctags with 'sudo apt install universal-ctags' to get yaml support"
+exit 1

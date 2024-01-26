@@ -1,7 +1,7 @@
 __fd_get_parent()
 {
-	local base="${1%%/*}"
-	local pwd="$PWD/"
+	local pwd="$1/"
+	local base="${2%%/*}"
 
 	pwd="${pwd%/${base}/*}"
 	echo "$pwd"
@@ -9,8 +9,12 @@ __fd_get_parent()
 
 fd()
 {
-	local pwd=$(__fd_get_parent "$1")
+	local pwd=$(__fd_get_parent "$PWD" "$1")
 	[ "${pwd}" = "${PWD}" ] && return
+    if [ "${pwd}/${1}" = "${PWD}" ]
+    then
+        pwd=$(__fd_get_parent "$(dirname "$PWD")" "$1")
+    fi
     cd "${pwd}/${1}" && echo ${PWD}
 }
 

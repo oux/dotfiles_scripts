@@ -1,3 +1,4 @@
+shopt -s direxpand
 shopt -s autocd
 # for avoid stop signal on terminal + permit forward-search
 stty -ixon
