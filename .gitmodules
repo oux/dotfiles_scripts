@@ -1,3 +1,3 @@
-[submodule "vim"]
-	path = vim
+[submodule "dotfiles/vim"]
+	path = dotfiles/vim
 	url = https://github.com/oux/dotfiles_vim.git

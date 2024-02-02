@@ -15,23 +15,23 @@ URxvt.keysym.M-q: perl:matcher:last
 
 ! URxvt.colorUL: fg1
 
-URxvt.matcher.rend.0: Uline fg6
-
-URxvt.matcher.pattern.1: (bug|BZ|Bz):?\\s+(\\d+)
-URxvt.matcher.launcher.1: sensible-browser http:\/\/shilc211.sh.intel.com:41006\/show_bug.cgi?id=$2
-URxvt.matcher.rend.1: Uline fg5
-
-URxvt.matcher.pattern.2: \\bcommit:?\\s+([\\da-f]\{7,41\})
-URxvt.matcher.launcher.2: sensible-browser https:\/\/android.intel.com/#/q/commit:$1,n,z
-! https:\/\/opticm6.rds.intel.com/r/#/q/commit:$1,n,z
-! URxvt.matcher.rend.2: Uline fg1
-
-URxvt.matcher.pattern.3: \\bChange-Id:\\s+(I[\\da-f]\{40\})
-URxvt.matcher.launcher.3: sensible-browser https:\/\/android.intel.com/#/q/$1,n,z
-URxvt.matcher.rend.3: Uline fg6
-
-URxvt.matcher.pattern.4: ((OAM|IMINAN)-\\d+)
-URxvt.matcher.launcher.4: sensible-browser https:\/\/jira01.devtools.intel.com\/browse\/$1
+!URxvt.matcher.rend.0: Uline fg6
+!
+!URxvt.matcher.pattern.1: (bug|BZ|Bz):?\\s+(\\d+)
+!URxvt.matcher.launcher.1: sensible-browser http:\/\/shilc211.sh.intel.com:41006\/show_bug.cgi?id=$2
+!URxvt.matcher.rend.1: Uline fg5
+!
+!URxvt.matcher.pattern.2: \\bcommit:?\\s+([\\da-f]\{7,41\})
+!URxvt.matcher.launcher.2: sensible-browser https:\/\/android.intel.com/#/q/commit:$1,n,z
+!! https:\/\/opticm6.rds.intel.com/r/#/q/commit:$1,n,z
+!! URxvt.matcher.rend.2: Uline fg1
+!
+!URxvt.matcher.pattern.3: \\bChange-Id:\\s+(I[\\da-f]\{40\})
+!URxvt.matcher.launcher.3: sensible-browser https:\/\/android.intel.com/#/q/$1,n,z
+!URxvt.matcher.rend.3: Uline fg6
+!
+!URxvt.matcher.pattern.4: ((OAM|IMINAN)-\\d+)
+!URxvt.matcher.launcher.4: sensible-browser https:\/\/jira01.devtools.intel.com\/browse\/$1
 
 
 !URxvt*font: xft:Menlo:pixelsize=10

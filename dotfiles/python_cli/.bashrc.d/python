@@ -1,10 +1,6 @@
-export PYTHONSTARTUP=~/.pythonrc
-#export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PATH:$PYENV_ROOT/bin"
-# which pyenv &> /dev/null && eval "$(pyenv init --path)"
+# export PYTHONSTARTUP=~/.pythonrc
 
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init -)"
 export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 
 alias pyfiles="find -name '*.py' \! -path "*.eggs*" \! -path '*tmp*' > python.files"
