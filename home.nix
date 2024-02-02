@@ -24,9 +24,10 @@ let
           fileSet = builtins.readDir (makePath breadcrumbs);
           processItem = (location: type: let
               breadcrumbs' = breadcrumbs ++ [location];
+              # a = lib.debug.traceIf true location 3;
             in
               if
-                type == "regular"
+                type == "regular" && ! lib.strings.hasPrefix ".git" location  || lib.strings.hasPrefix ".gitconfig" location
               then
                 [ (fileImport breadcrumbs') ]
               else if
@@ -134,5 +135,4 @@ in
       Restart = "always";
     };
   };
-
 }
