@@ -1,6 +1,8 @@
-export PYTHONSTARTUP=~/.pythonrc
+# export PYTHONSTARTUP=~/.pythonrc
+#export PATH="$PATH:$PYENV_ROOT/bin"
+#
+#
 #export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PATH:$PYENV_ROOT/bin"
 # which pyenv &> /dev/null && eval "$(pyenv init --path)"
 
 # eval "$(pyenv init -)"

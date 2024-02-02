@@ -1,0 +1,2 @@
+alias sqlitec="python3 -c 'import apsw;apsw.main()'"
+alias sqlite="sqlitec -nocolour"
