@@ -1,5 +1,5 @@
 # With neovim ctrl+c on load of big files doesn't work
-# alias vi=nvim
+alias a=nvim
 alias n="nvim"
 # alias vi="/usr/bin/vim --display :0.0 --servername vim"
 # alias v="/usr/bin/vim --display :0.0 --servername vim --remote"

@@ -3,7 +3,7 @@
 ```bash
 git clone http://github.com/oux/dotfiles_scripts --recurse-submodules
 cd dotfiles
-stow */
+stow */ -t ~/
 # If you change your dotfiles:
-stow -R */
+stow -R */ -t ~/
 ```

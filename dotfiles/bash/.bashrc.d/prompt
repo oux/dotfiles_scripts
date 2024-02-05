@@ -23,29 +23,31 @@ WIN_ID=$(xdpyinfo  2> /dev/null|awk '/focus/{sub(",","",$3);print $3}')
 TITLE_DISPLAY='\[\e]2;\w\a\]'
 ALARM='echo -ne "\a"'
 
-export SEP=$'\uE0B4'  # rond
-export SEP=$'\uE0B2'  # fleche inverse
-export SEP=$'\uE0B0'  # fleche
-# export SEP=$'\uE0B6'  # rond inverse ## To not work anymore with powerline patched font
-# export SEP=$'\uE0B1'  #if prompt with same readline background color
-[ "$SHLVL" -gt 2 ] && SEP+=$SEP
-SEP+=" "
+export ENDC=$'\uE0B4'  # rond
+export ENDC=$'\uE0B2'  # fleche inverse
+export ENDC=$'\uE0B0'  # fleche
+export ENDC=$'\uE0BC'  # slash
+export SEP=$'\u01C0'   # vertical bar
+# export ENDC=$'\uE0B6'  # rond inverse ## To not work anymore with powerline patched font
+# export ENDC=$'\uE0B1'  #if prompt with same readline background color
+# [ "$SHLVL" -gt 2 ] && ENDC+=$ENDC
 FG1=36
 FG2=35
-FG2=10
+FG2=11
 BG=236
-RETURN_CODE=$'\[\e[48;5;'$BG$'m\]$(RES=$? && [ $RES -ne 0 ] && echo "\[\e[38;5;1m\]r=$RES\[\e[38;5;'$FG2$'m\]|")'
+RETURN_CODE=$'\[\e[48;5;'$BG$'m\]$(RES=$? && [ $RES -ne 0 ] && echo "\[\e[38;5;1m\]r=$RES\[\e[38;5;'$FG2$'m\]$SEP")'
 
 JOBS=$'\[\e[48;5;'$BG$'m\]$(
-[  "$(jobs -l)" ] && echo "\[\e[38;5;11m\]j=\j\[\e[38;5;'$FG2$'m\]|"
+[  "$(jobs -l)" ] && echo "j=\j$SEP"
 )'
-COMMON_PROMPT=$'\[\e[38;5;'$FG2$'m\e[48;5;'$BG$'m\]''\t|'$'\[\e[38;5;'$FG1$'m\e[48;5;'$BG$'m\]\w'
+COMMON_PROMPT=$'\[\e[38;5;'$FG2$'m\e[48;5;'$BG$'m\]''\t$SEP'$'\[\e[38;5;'$FG1$'m\e[48;5;'$BG$'m\]\w'
 # 233 like on ~/.tmux.conf window-active-style bg=colour233
-INV_ENDING=$'\[\e[38;5;233m\e[48;5;'$BG$'m\]'$SEP$'\[\e[;m\]'
-NOR_ENDING=$'\[\e[38;5;'$BG$'m\e[48;5m\]'$SEP$'\[\e[;m\]'
-ENDING=$NOR_ENDING
-test ${SEP:0:1} == $'\uE0B2' && ENDING=$INV_ENDING
-test ${SEP:0:1} == $'\uE0B6' && ENDING=$INV_ENDING
+INV_ENDING=$'\[\e[38;5;233m\e[48;5;'$BG$'m\]$ENDC\[\e[;m\] '
+NOR_ENDING=$'\[\e[38;5;'$BG$'m\e[48;5m\]$ENDC\[\e[;m\] '
+DBL_ENDING=$'\[\e[38;5;'$BG$'m\e[48;5;237m\]$ENDC\[\e[38;5;237m\e[48;5m\]$ENDC\[\e[;m\] '
+[ "$SHLVL" -gt 2 ] && [ $ENDC == $'\uE0BC' ] && ENDING=$DBL_ENDING || ENDING=$NOR_ENDING
+#test ${ENDC:0:1} == $'\uE0B2' && ENDING=$INV_ENDING
+#test ${ENDC:0:1} == $'\uE0B6' && ENDING=$INV_ENDING
 case "$TERM" in
     linux|xterm|screen)
     PS1=$RETURN_CODE$JOBS$COMMON_PROMPT$ENDING$ENDING
