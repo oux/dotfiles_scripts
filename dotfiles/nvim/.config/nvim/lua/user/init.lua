@@ -1,5 +1,16 @@
 return {
-  colorscheme = "tokyonight-moon",
+  colorscheme = "tokyonight",
+  -- colorscheme = "tokyonight-moon",
+  highlights = {
+    tokyonight = {
+      Normal = { bg = "none" },
+      NormalNC = { bg = "#000000" },
+    },
+    init = {
+      Normal = { bg = "none" },
+      NormalNC = { bg = "#000000" },
+    }
+  },
   mappings = {
     n = {
       ["ù"] = "<cmd>lua require('telescope.builtin').oldfiles{}<CR>",
